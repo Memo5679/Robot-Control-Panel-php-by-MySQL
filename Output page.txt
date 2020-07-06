@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+    
+  <head>
+
+  <style>
+
+
+  
+      h2{
+          color: #4D5656;
+      font-size:  60px ;
+      }
+       
+
+
+
+   body{
+   
+    width:100%;
+       height: 100%;
+       background-color: #4B79A1;   
+    }
+
+
+</style>
+
+
+  </head>
+  <body>
+
+<h2>
+    
+
+ 
+     
+     <?php
+
+
+
+session_start();
+$movement = $_SESSION['movement'];
+ echo $movement;
+
+
+
+?>
+
+     </h2>
+ 
+  
+   <?php
+
+require 'DataBase.php';
+$conn = OpenCon();
+
+$movement = $_SESSION['movement'];
+
+
+$sql = "INSERT INTO Ro (id,movement)values('0','$movement')";
+mysqli_query($conn, $sql);
+
+ unset($_SESSION['movement']);
+
+CloseCon($conn);
+?>
+   
+
+      
+    
+
+   </body>
+    
+    </html>
